@@ -1,0 +1,42 @@
+
+
+create table halls (
+hid INT PRIMARY KEY AUTO_INCREMENT,
+hname VARCHAR(30),
+location VARCHAR(100));
+
+create table users (
+uid INT PRIMARY KEY AUTO_INCREMENT,
+fname VARCHAR(30),
+mname VARCHAR(30),
+lname VARCHAR(30),
+uname VARCHAR(40) UNIQUE,
+email VARCHAR(40),
+phone VARCHAR(13),
+password VARCHAR(50));
+
+create table bookings (
+bid INT PRIMARY KEY AUTO_INCREMENT,
+uname VARCHAR(40),
+hallno INT,
+bdate DATE,
+stime TIME,
+etime TIME,
+event VARCHAR(100),
+FOREIGN KEY (uname) REFERENCES users(uname));
+
+create table admin (
+uname VARCHAR(40) PRIMARY KEY,
+password VARCHAR(50));
+
+INSERT INTO `admin`(`uname`, `password`) VALUES ('admin','admin123');
+
+INSERT INTO `halls`(`hname`, `location`) VALUES ('VMH','hall1.jpg');
+INSERT INTO `halls`(`hname`, `location`) VALUES ('TB','hall2.jpg');
+INSERT INTO `halls`(`hname`, `location`) VALUES ('AB','hall3.jpg');
+INSERT INTO `halls`(`hname`, `location`) VALUES ('NR','hall4.jpg');
+
+INSERT INTO `bookings` (`uname`, `hallno`, `bdate`, `stime`, `etime`,`event`) VALUES ('amalpf',1,'2019-12-14','09:30','10:30','Department Day');
+INSERT INTO `bookings` (`uname`, `hallno`, `bdate`, `stime`, `etime`,`event`) VALUES ('amalpf',2,'2020-01-14','11:30','12:30','Seminar');
+INSERT INTO `bookings` (`uname`, `hallno`, `bdate`, `stime`, `etime`,`event`) VALUES ('amalpf',3,'2019-12-24','08:30','10:30','Quiz Competition');
+
